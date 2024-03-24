@@ -1,0 +1,620 @@
+##################################################################################
+##                                                                              ##
+##                                                                              ##
+##                 SCRIPT C: METHYLATION CALLING ON THE REFERENCE               ##
+##                          COMPLETE GENOME AND MITOGENOME                      ##
+##                                                                              ##
+##                                                                              ##
+##################################################################################
+
+
+
+
+
+##### PART 1 - GPU server (docker + bash): Methylation calling with Dorado (in parralel on 9 TMUX sessions) #####
+
+### BARCODE 1 ###
+
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode1 --verbose --modified-bases 5mC > C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode1.bam"
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode1 --verbose --modified-bases 6mA > C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode1.bam"
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode1 --verbose --modified-bases 5mCG_5hmCG > C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode1.bam"
+
+
+
+### BARCODE 2 ###
+
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode2 --verbose --modified-bases 5mC > C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode2.bam"
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode2 --verbose --modified-bases 6mA > C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode2.bam"
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode2 --verbose --modified-bases 5mCG_5hmCG > C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode2.bam"
+
+
+
+### BARCODE 3 ###
+
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode3 --verbose --modified-bases 5mC > C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode3.bam"
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode3 --verbose --modified-bases 6mA > C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode3.bam"
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode3 --verbose --modified-bases 5mCG_5hmCG > C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode3.bam"
+
+
+
+### BARCODE 4 ###
+
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode4 --verbose --modified-bases 5mC > C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode4.bam"
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode4 --verbose --modified-bases 6mA > C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode4.bam"
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode4 --verbose --modified-bases 5mCG_5hmCG > C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode4.bam"
+
+
+
+### BARCODE 5 ###
+
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode5 --verbose --modified-bases 5mC > C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode5.bam"
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode5 --verbose --modified-bases 6mA > C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode5.bam"
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode5 --verbose --modified-bases 5mCG_5hmCG > C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode5.bam"
+
+
+
+### BARCODE 6 ###
+
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode6 --verbose --modified-bases 5mC > C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode6.bam"
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode6 --verbose --modified-bases 6mA > C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode6.bam"
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode6 --verbose --modified-bases 5mCG_5hmCG > C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode6.bam"
+
+
+
+### BARCODE 7 ###
+
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode7 --verbose --modified-bases 5mC > C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode7.bam"
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode7 --verbose --modified-bases 6mA > C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode7.bam"
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode7 --verbose --modified-bases 5mCG_5hmCG > C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode7.bam"
+
+
+
+### BARCODE 8 ###
+
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode8 --verbose --modified-bases 5mC > C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode8.bam"
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode8 --verbose --modified-bases 6mA > C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode8.bam"
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode8 --verbose --modified-bases 5mCG_5hmCG > C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode8.bam"
+
+
+
+### BARCODE 9 ###
+
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode9 --verbose --modified-bases 5mC > C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode9.bam"
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode9 --verbose --modified-bases 6mA > C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode9.bam"
+docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 B_data/seabass_reads_1kb/pod5_barcode9 --verbose --modified-bases 5mCG_5hmCG > C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode9.bam"
+
+
+
+
+
+##### PART 2 - CPU server (bash): Mapping on the reference mitochondrial genome (in parralel on 9 TMUX sessions) #####
+
+### BARCODE 1 ###
+
+## Mapping with Dorado on the reference complete mitochondrial genome
+
+source venv_remora/bin/activate
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode1.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mC_only_1kb_basecalled_assigned_barcode1.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode1.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_6mA_only_1kb_basecalled_assigned_barcode1.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode1.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode1.bam
+
+## sorting and indexing with Samtools
+
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mC_only_1kb_basecalled_assigned_barcode1.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mC_only_1kb_barcode1.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_6mA_only_1kb_basecalled_assigned_barcode1.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_6mA_only_1kb_barcode1.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode1.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mCG_5hmCG_only_1kb_barcode1.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mC_only_1kb_barcode1.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_6mA_only_1kb_barcode1.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mCG_5hmCG_only_1kb_barcode1.bam
+
+
+
+### BARCODE 2 ###
+
+## Mapping with Dorado on the reference complete mitochondrial genome
+
+source venv_remora/bin/activate
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode2.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mC_only_1kb_basecalled_assigned_barcode2.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode2.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_6mA_only_1kb_basecalled_assigned_barcode2.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode2.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode2.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mC_only_1kb_basecalled_assigned_barcode2.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mC_only_1kb_barcode2.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_6mA_only_1kb_basecalled_assigned_barcode2.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_6mA_only_1kb_barcode2.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode2.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mCG_5hmCG_only_1kb_barcode2.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mC_only_1kb_barcode2.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_6mA_only_1kb_barcode2.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mCG_5hmCG_only_1kb_barcode2.bam
+
+
+
+### BARCODE 3 ###
+
+## Mapping with Dorado on the reference complete mitochondrial genome
+
+source venv_remora/bin/activate
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode3.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mC_only_1kb_basecalled_assigned_barcode3.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode3.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_6mA_only_1kb_basecalled_assigned_barcode3.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode3.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode3.bam
+
+
+## sorting and indexing with Samtools
+
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mC_only_1kb_basecalled_assigned_barcode3.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mC_only_1kb_barcode3.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_6mA_only_1kb_basecalled_assigned_barcode3.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_6mA_only_1kb_barcode3.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode3.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mCG_5hmCG_only_1kb_barcode3.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mC_only_1kb_barcode3.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_6mA_only_1kb_barcode3.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mCG_5hmCG_only_1kb_barcode3.bam
+
+
+
+### BARCODE 4 ###
+
+## Mapping with Dorado on the reference complete mitochondrial genome
+
+source venv_remora/bin/activate
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode4.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mC_only_1kb_basecalled_assigned_barcode4.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode4.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_6mA_only_1kb_basecalled_assigned_barcode4.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode4.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode4.bam
+
+
+## sorting and indexing with Samtools
+
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mC_only_1kb_basecalled_assigned_barcode4.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mC_only_1kb_barcode4.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_6mA_only_1kb_basecalled_assigned_barcode4.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_6mA_only_1kb_barcode4.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode4.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mCG_5hmCG_only_1kb_barcode4.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mC_only_1kb_barcode4.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_6mA_only_1kb_barcode4.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mCG_5hmCG_only_1kb_barcode4.bam
+
+
+
+### BARCODE 5 ###
+
+## Mapping with Dorado on the reference complete mitochondrial genome
+
+source venv_remora/bin/activate
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode5.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mC_only_1kb_basecalled_assigned_barcode5.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode5.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_6mA_only_1kb_basecalled_assigned_barcode5.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode5.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode5.bam
+
+
+## sorting and indexing with Samtools
+
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mC_only_1kb_basecalled_assigned_barcode5.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mC_only_1kb_barcode5.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_6mA_only_1kb_basecalled_assigned_barcode5.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_6mA_only_1kb_barcode5.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode5.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mCG_5hmCG_only_1kb_barcode5.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mC_only_1kb_barcode5.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_6mA_only_1kb_barcode5.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mCG_5hmCG_only_1kb_barcode5.bam
+
+
+
+### BARCODE 6 ###
+
+## Mapping with Dorado on the reference complete mitochondrial genome
+
+source venv_remora/bin/activate
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode6.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mC_only_1kb_basecalled_assigned_barcode6.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode6.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_6mA_only_1kb_basecalled_assigned_barcode6.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode6.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode6.bam
+
+
+## sorting and indexing with Samtools
+
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mC_only_1kb_basecalled_assigned_barcode6.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mC_only_1kb_barcode6.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_6mA_only_1kb_basecalled_assigned_barcode6.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_6mA_only_1kb_barcode6.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode6.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mCG_5hmCG_only_1kb_barcode6.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mC_only_1kb_barcode6.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_6mA_only_1kb_barcode6.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mCG_5hmCG_only_1kb_barcode6.bam
+
+
+
+### BARCODE 7 ###
+
+## Mapping with Dorado on the reference complete mitochondrial genome
+
+source venv_remora/bin/activate
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode7.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mC_only_1kb_basecalled_assigned_barcode7.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode7.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_6mA_only_1kb_basecalled_assigned_barcode7.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode7.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode7.bam
+
+
+## sorting and indexing with Samtools
+
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mC_only_1kb_basecalled_assigned_barcode7.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mC_only_1kb_barcode7.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_6mA_only_1kb_basecalled_assigned_barcode7.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_6mA_only_1kb_barcode7.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode7.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mCG_5hmCG_only_1kb_barcode7.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mC_only_1kb_barcode7.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_6mA_only_1kb_barcode7.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mCG_5hmCG_only_1kb_barcode7.bam
+
+
+
+### BARCODE 8 ###
+
+## Mapping with Dorado on the reference complete mitochondrial genome
+
+source venv_remora/bin/activate
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode8.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mC_only_1kb_basecalled_assigned_barcode8.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode8.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_6mA_only_1kb_basecalled_assigned_barcode8.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode8.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode8.bam
+
+
+## sorting and indexing with Samtools
+
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mC_only_1kb_basecalled_assigned_barcode8.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mC_only_1kb_barcode8.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_6mA_only_1kb_basecalled_assigned_barcode8.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_6mA_only_1kb_barcode8.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode8.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mCG_5hmCG_only_1kb_barcode8.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mC_only_1kb_barcode8.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_6mA_only_1kb_barcode8.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mCG_5hmCG_only_1kb_barcode8.bam
+
+
+
+### BARCODE 9 ###
+
+## Mapping with Dorado on the reference complete mitochondrial genome
+
+source venv_remora/bin/activate
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode9.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mC_only_1kb_basecalled_assigned_barcode9.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode9.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_6mA_only_1kb_basecalled_assigned_barcode9.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/seabass_complete_mitogenome_NC_026074.fasta /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode9.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode9.bam
+
+
+## sorting and indexing with Samtools
+
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mC_only_1kb_basecalled_assigned_barcode9.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mC_only_1kb_barcode9.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_6mA_only_1kb_basecalled_assigned_barcode9.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_6mA_only_1kb_barcode9.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/aligned_mito_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode9.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mCG_5hmCG_only_1kb_barcode9.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mC_only_1kb_barcode9.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_6mA_only_1kb_barcode9.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_mitogenome/sorted_aligned_mito_5mCG_5hmCG_only_1kb_barcode9.bam
+
+
+
+
+
+##### PART 3 - CPU server (bash): Methylation summary of the mapping on the reference whole genome (in parralel on 9 TMUX sessions) #####
+
+### BARCODE 1 ###
+
+## Mapping with Dorado on the complete reference genome + sorting and indexing with Samtools
+
+source venv_remora/bin/activate
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode1.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mC_only_1kb_basecalled_assigned_barcode1.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode1.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_6mA_only_1kb_basecalled_assigned_barcode1.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode1.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode1.bam
+
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mC_only_1kb_basecalled_assigned_barcode1.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode1.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_6mA_only_1kb_basecalled_assigned_barcode1.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode1.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode1.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode1.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode1.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode1.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode1.bam
+
+
+## Aggregating the modified base counts for each type of methylation supported in 2023 with modbam2bed
+
+curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj bin/micromamba
+eval "$(./bin/micromamba shell hook -s posix)"
+./bin/micromamba shell init -s bash -p ~/micromamba
+micromamba activate
+micromamba activate modbam2bed
+
+modbam2bed --aggregate --mod_base modC --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode1.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_modC_sup_barcode1.cpg.bed
+modbam2bed --aggregate --mod_base 5mC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode1.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_5mC_sup_barcode1.cpg.bed
+modbam2bed --aggregate --mod_base 5hmC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode1.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_5hmC_sup_barcode1.cpg.bed
+
+modbam2bed --aggregate --mod_base modA --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode1.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_6mA_only_1kb_whole_genome/detection_6mA_only_1kb_all_modA_sup_barcode1.cpg.bed
+modbam2bed --aggregate --mod_base 6mA --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode1.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_6mA_only_1kb_whole_genome/detection_6mA_only_1kb_all_6mA_sup_barcode1.cpg.bed
+
+modbam2bed --aggregate --mod_base modC --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode1.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_modC_sup_barcode1.cpg.bed
+modbam2bed --aggregate --mod_base 5mC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode1.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_5mC_sup_barcode1.cpg.bed
+modbam2bed --aggregate --mod_base 5hmC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode1.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_5hmC_sup_barcode1.cpg.bed
+
+
+
+### BARCODE 2 ###
+
+## Mapping with Dorado on the complete reference genome + sorting and indexing with Samtools
+
+source venv_remora/bin/activate
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode2.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mC_only_1kb_basecalled_assigned_barcode2.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode2.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_6mA_only_1kb_basecalled_assigned_barcode2.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode2.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode2.bam
+
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mC_only_1kb_basecalled_assigned_barcode2.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode2.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_6mA_only_1kb_basecalled_assigned_barcode2.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode2.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode2.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode2.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode2.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode2.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode2.bam
+
+
+## Aggregating the modified base counts for each type of methylation supported in 2023 with modbam2bed
+
+curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj bin/micromamba
+eval "$(./bin/micromamba shell hook -s posix)"
+./bin/micromamba shell init -s bash -p ~/micromamba
+micromamba activate
+micromamba activate modbam2bed
+
+modbam2bed --aggregate --mod_base modC --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode2.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_modC_sup_barcode2.cpg.bed
+modbam2bed --aggregate --mod_base 5mC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode2.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_5mC_sup_barcode2.cpg.bed
+modbam2bed --aggregate --mod_base 5hmC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode2.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_5hmC_sup_barcode2.cpg.bed
+
+modbam2bed --aggregate --mod_base modA --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode2.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_6mA_only_1kb_whole_genome/detection_6mA_only_1kb_all_modA_sup_barcode2.cpg.bed
+modbam2bed --aggregate --mod_base 6mA --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode2.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_6mA_only_1kb_whole_genome/detection_6mA_only_1kb_all_6mA_sup_barcode2.cpg.bed
+
+modbam2bed --aggregate --mod_base modC --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode2.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_modC_sup_barcode2.cpg.bed
+modbam2bed --aggregate --mod_base 5mC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode2.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_5mC_sup_barcode2.cpg.bed
+modbam2bed --aggregate --mod_base 5hmC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode2.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_5hmC_sup_barcode2.cpg.bed
+
+
+
+### BARCODE 3 ###
+
+## Mapping with Dorado on the complete reference genome + sorting and indexing with Samtools
+
+source venv_remora/bin/activate
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode3.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mC_only_1kb_basecalled_assigned_barcode3.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode3.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_6mA_only_1kb_basecalled_assigned_barcode3.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode3.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode3.bam
+
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mC_only_1kb_basecalled_assigned_barcode3.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode3.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_6mA_only_1kb_basecalled_assigned_barcode3.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode3.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode3.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode3.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode3.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode3.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode3.bam
+
+
+## Aggregating the modified base counts for each type of methylation supported in 2023 with modbam2bed
+
+curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj bin/micromamba
+eval "$(./bin/micromamba shell hook -s posix)"
+./bin/micromamba shell init -s bash -p ~/micromamba
+micromamba activate
+micromamba activate modbam2bed
+
+modbam2bed --aggregate --mod_base modC --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode3.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_modC_sup_barcode3.cpg.bed
+modbam2bed --aggregate --mod_base 5mC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode3.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_5mC_sup_barcode3.cpg.bed
+modbam2bed --aggregate --mod_base 5hmC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode3.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_5hmC_sup_barcode3.cpg.bed
+
+modbam2bed --aggregate --mod_base modA --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode3.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_6mA_only_1kb_whole_genome/detection_6mA_only_1kb_all_modA_sup_barcode3.cpg.bed
+modbam2bed --aggregate --mod_base 6mA --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode3.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_6mA_only_1kb_whole_genome/detection_6mA_only_1kb_all_6mA_sup_barcode3.cpg.bed
+
+modbam2bed --aggregate --mod_base modC --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode3.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_modC_sup_barcode3.cpg.bed
+modbam2bed --aggregate --mod_base 5mC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode3.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_5mC_sup_barcode3.cpg.bed
+modbam2bed --aggregate --mod_base 5hmC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode3.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_5hmC_sup_barcode3.cpg.bed
+
+
+
+### BARCODE 4 ###
+
+## Mapping with Dorado on the complete reference genome + sorting and indexing with Samtools
+
+source venv_remora/bin/activate
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode4.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mC_only_1kb_basecalled_assigned_barcode4.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode4.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_6mA_only_1kb_basecalled_assigned_barcode4.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode4.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode4.bam
+
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mC_only_1kb_basecalled_assigned_barcode4.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode4.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_6mA_only_1kb_basecalled_assigned_barcode4.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode4.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode4.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode4.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode4.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode4.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode4.bam
+
+
+## Aggregating the modified base counts for each type of methylation supported in 2023 with modbam2bed
+
+curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj bin/micromamba
+eval "$(./bin/micromamba shell hook -s posix)"
+./bin/micromamba shell init -s bash -p ~/micromamba
+micromamba activate
+micromamba activate modbam2bed
+
+modbam2bed --aggregate --mod_base modC --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode4.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_modC_sup_barcode4.cpg.bed
+modbam2bed --aggregate --mod_base 5mC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode4.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_5mC_sup_barcode4.cpg.bed
+modbam2bed --aggregate --mod_base 5hmC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode4.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_5hmC_sup_barcode4.cpg.bed
+
+modbam2bed --aggregate --mod_base modA --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode4.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_6mA_only_1kb_whole_genome/detection_6mA_only_1kb_all_modA_sup_barcode4.cpg.bed
+modbam2bed --aggregate --mod_base 6mA --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode4.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_6mA_only_1kb_whole_genome/detection_6mA_only_1kb_all_6mA_sup_barcode4.cpg.bed
+
+modbam2bed --aggregate --mod_base modC --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode4.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_modC_sup_barcode4.cpg.bed
+modbam2bed --aggregate --mod_base 5mC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode4.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_5mC_sup_barcode4.cpg.bed
+modbam2bed --aggregate --mod_base 5hmC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode4.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_5hmC_sup_barcode4.cpg.bed
+
+
+
+### BARCODE 5 ###
+
+## Mapping with Dorado on the complete reference genome + sorting and indexing with Samtools
+
+source venv_remora/bin/activate
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode5.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mC_only_1kb_basecalled_assigned_barcode5.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode5.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_6mA_only_1kb_basecalled_assigned_barcode5.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode5.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode5.bam
+
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mC_only_1kb_basecalled_assigned_barcode5.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode5.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_6mA_only_1kb_basecalled_assigned_barcode5.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode5.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode5.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode5.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode5.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode5.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode5.bam
+
+
+## Aggregating the modified base counts for each type of methylation supported in 2023 with modbam2bed
+
+curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj bin/micromamba
+eval "$(./bin/micromamba shell hook -s posix)"
+./bin/micromamba shell init -s bash -p ~/micromamba
+micromamba activate
+micromamba activate modbam2bed
+
+modbam2bed --aggregate --mod_base modC --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode5.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_modC_sup_barcode5.cpg.bed
+modbam2bed --aggregate --mod_base 5mC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode5.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_5mC_sup_barcode5.cpg.bed
+modbam2bed --aggregate --mod_base 5hmC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode5.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_5hmC_sup_barcode5.cpg.bed
+
+modbam2bed --aggregate --mod_base modA --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode5.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_6mA_only_1kb_whole_genome/detection_6mA_only_1kb_all_modA_sup_barcode5.cpg.bed
+modbam2bed --aggregate --mod_base 6mA --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode5.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_6mA_only_1kb_whole_genome/detection_6mA_only_1kb_all_6mA_sup_barcode5.cpg.bed
+
+modbam2bed --aggregate --mod_base modC --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode5.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_modC_sup_barcode5.cpg.bed
+modbam2bed --aggregate --mod_base 5mC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode5.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_5mC_sup_barcode5.cpg.bed
+modbam2bed --aggregate --mod_base 5hmC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode5.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_5hmC_sup_barcode5.cpg.bed
+
+
+
+### BARCODE 5 ###
+
+## Mapping with Dorado on the complete reference genome + sorting and indexing with Samtools
+
+source venv_remora/bin/activate
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode6.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mC_only_1kb_basecalled_assigned_barcode6.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode6.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_6mA_only_1kb_basecalled_assigned_barcode6.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode6.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode6.bam
+
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mC_only_1kb_basecalled_assigned_barcode6.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode6.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_6mA_only_1kb_basecalled_assigned_barcode6.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode6.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode6.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode6.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode6.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode6.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode6.bam
+
+
+## Aggregating the modified base counts for each type of methylation supported in 2023 with modbam2bed
+
+curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj bin/micromamba
+eval "$(./bin/micromamba shell hook -s posix)"
+./bin/micromamba shell init -s bash -p ~/micromamba
+micromamba activate
+micromamba activate modbam2bed
+
+modbam2bed --aggregate --mod_base modC --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode6.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_modC_sup_barcode6.cpg.bed
+modbam2bed --aggregate --mod_base 5mC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode6.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_5mC_sup_barcode6.cpg.bed
+modbam2bed --aggregate --mod_base 5hmC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode6.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_5hmC_sup_barcode6.cpg.bed
+
+modbam2bed --aggregate --mod_base modA --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode6.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_6mA_only_1kb_whole_genome/detection_6mA_only_1kb_all_modA_sup_barcode6.cpg.bed
+modbam2bed --aggregate --mod_base 6mA --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode6.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_6mA_only_1kb_whole_genome/detection_6mA_only_1kb_all_6mA_sup_barcode6.cpg.bed
+
+modbam2bed --aggregate --mod_base modC --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode6.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_modC_sup_barcode6.cpg.bed
+modbam2bed --aggregate --mod_base 5mC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode6.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_5mC_sup_barcode6.cpg.bed
+modbam2bed --aggregate --mod_base 5hmC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode6.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_5hmC_sup_barcode6.cpg.bed
+
+
+
+### BARCODE 7 ###
+
+## Mapping with Dorado on the complete reference genome + sorting and indexing with Samtools
+
+source venv_remora/bin/activate
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode7.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mC_only_1kb_basecalled_assigned_barcode7.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode7.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_6mA_only_1kb_basecalled_assigned_barcode7.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode7.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode7.bam
+
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mC_only_1kb_basecalled_assigned_barcode7.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode7.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_6mA_only_1kb_basecalled_assigned_barcode7.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode7.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode7.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode7.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode7.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode7.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode7.bam
+
+
+## Aggregating the modified base counts for each type of methylation supported in 2023 with modbam2bed
+
+curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj bin/micromamba
+eval "$(./bin/micromamba shell hook -s posix)"
+./bin/micromamba shell init -s bash -p ~/micromamba
+micromamba activate
+micromamba activate modbam2bed
+
+modbam2bed --aggregate --mod_base modC --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode7.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_modC_sup_barcode7.cpg.bed
+modbam2bed --aggregate --mod_base 5mC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode7.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_5mC_sup_barcode7.cpg.bed
+modbam2bed --aggregate --mod_base 5hmC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode7.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_5hmC_sup_barcode7.cpg.bed
+
+modbam2bed --aggregate --mod_base modA --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode7.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_6mA_only_1kb_whole_genome/detection_6mA_only_1kb_all_modA_sup_barcode7.cpg.bed
+modbam2bed --aggregate --mod_base 6mA --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode7.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_6mA_only_1kb_whole_genome/detection_6mA_only_1kb_all_6mA_sup_barcode7.cpg.bed
+
+modbam2bed --aggregate --mod_base modC --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode7.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_modC_sup_barcode7.cpg.bed
+modbam2bed --aggregate --mod_base 5mC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode7.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_5mC_sup_barcode7.cpg.bed
+modbam2bed --aggregate --mod_base 5hmC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode7.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_5hmC_sup_barcode7.cpg.bed
+
+
+
+### BARCODE 8 ###
+
+## Mapping with Dorado on the complete reference genome + sorting and indexing with Samtools
+
+source venv_remora/bin/activate
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode8.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mC_only_1kb_basecalled_assigned_barcode8.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode8.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_6mA_only_1kb_basecalled_assigned_barcode8.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode8.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode8.bam
+
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mC_only_1kb_basecalled_assigned_barcode8.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode8.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_6mA_only_1kb_basecalled_assigned_barcode8.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode8.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode8.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode8.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode8.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode8.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode8.bam
+
+
+## Aggregating the modified base counts for each type of methylation supported in 2023 with modbam2bed
+
+curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj bin/micromamba
+eval "$(./bin/micromamba shell hook -s posix)"
+./bin/micromamba shell init -s bash -p ~/micromamba
+micromamba activate
+micromamba activate modbam2bed
+
+modbam2bed --aggregate --mod_base modC --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode8.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_modC_sup_barcode8.cpg.bed
+modbam2bed --aggregate --mod_base 5mC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode8.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_5mC_sup_barcode8.cpg.bed
+modbam2bed --aggregate --mod_base 5hmC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode8.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_5hmC_sup_barcode8.cpg.bed
+
+modbam2bed --aggregate --mod_base modA --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode8.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_6mA_only_1kb_whole_genome/detection_6mA_only_1kb_all_modA_sup_barcode8.cpg.bed
+modbam2bed --aggregate --mod_base 6mA --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode8.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_6mA_only_1kb_whole_genome/detection_6mA_only_1kb_all_6mA_sup_barcode8.cpg.bed
+
+modbam2bed --aggregate --mod_base modC --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode8.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_modC_sup_barcode8.cpg.bed
+modbam2bed --aggregate --mod_base 5mC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode8.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_5mC_sup_barcode8.cpg.bed
+modbam2bed --aggregate --mod_base 5hmC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode8.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_5hmC_sup_barcode8.cpg.bed
+
+
+
+### BARCODE 9 ###
+
+## Mapping with Dorado on the complete reference genome + sorting and indexing with Samtools
+
+source venv_remora/bin/activate
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mC_only_1kb_basecalled_assigned_barcode9.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mC_only_1kb_basecalled_assigned_barcode9.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/6mA_only_1kb_basecalled_assigned_barcode9.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_6mA_only_1kb_basecalled_assigned_barcode9.bam
+dorado-0.3.2-linux-x64/bin/dorado aligner /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/gpu_server_bam_folder_1kb/5mCG_5hmCG_only_1kb_basecalled_assigned_barcode9.bam --threads 1 > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode9.bam
+
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mC_only_1kb_basecalled_assigned_barcode9.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode9.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_6mA_only_1kb_basecalled_assigned_barcode9.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode9.bam
+samtools sort /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/aligned_5mCG_5hmCG_only_1kb_basecalled_assigned_barcode9.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode9.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode9.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode9.bam
+samtools index /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode9.bam
+
+
+## Aggregating the modified base counts for each type of methylation supported in 2023 with modbam2bed
+
+curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj bin/micromamba
+eval "$(./bin/micromamba shell hook -s posix)"
+./bin/micromamba shell init -s bash -p ~/micromamba
+micromamba activate
+micromamba activate modbam2bed
+
+modbam2bed --aggregate --mod_base modC --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode9.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_modC_sup_barcode9.cpg.bed
+modbam2bed --aggregate --mod_base 5mC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode9.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_5mC_sup_barcode9.cpg.bed
+modbam2bed --aggregate --mod_base 5hmC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mC_only_1kb_barcode9.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mC_only_1kb_whole_genome/detection_5mC_only_1kb_all_5hmC_sup_barcode9.cpg.bed
+
+modbam2bed --aggregate --mod_base modA --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode9.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_6mA_only_1kb_whole_genome/detection_6mA_only_1kb_all_modA_sup_barcode9.cpg.bed
+modbam2bed --aggregate --mod_base 6mA --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_6mA_only_1kb_barcode9.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_6mA_only_1kb_whole_genome/detection_6mA_only_1kb_all_6mA_sup_barcode9.cpg.bed
+
+modbam2bed --aggregate --mod_base modC --combine --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode9.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_modC_sup_barcode9.cpg.bed
+modbam2bed --aggregate --mod_base 5mC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode9.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_5mC_sup_barcode9.cpg.bed
+modbam2bed --aggregate --mod_base 5hmC --threads 1 /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/B_data/reference_genomes/GCF_905237075.1_dlabrax2021_genomic.fna /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/mapping_per_models_1kb_whole_genome/sorted_aligned_5mCG_5hmCG_only_1kb_barcode9.bam > /mnt/d/Users/'Eliot RUIZ'/Documents/Methylation/C_data/summary_5mCG_5hmCG_only_1kb_whole_genome/detection_5mCG_5hmCG_only_1kb_all_5hmC_sup_barcode9.cpg.bed
+
+
