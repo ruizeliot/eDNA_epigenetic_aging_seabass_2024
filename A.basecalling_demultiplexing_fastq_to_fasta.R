@@ -16,7 +16,7 @@
 # Note: MinKNOW settings were initially set to a fast basecalling using GUPPY, with a minimum Q-score of 8
 # We merged all POD5 (different folders) not to filter per Q, and used the latest sup basecalling model in Dorado
 
-# Note 2: The pod5 were all grouped in the "pod5_all" so they can be merged, but this folder was removed after (too heavy)
+# Note 2: The pod5 were all grouped in the "merged_pod5" so they can be merged, but this folder as well as the "MinKNOW_output" were removed after (too heavy)
 
 # sudo umount /mnt/h
 # sudo mount -t drvfs H: /mnt/h
