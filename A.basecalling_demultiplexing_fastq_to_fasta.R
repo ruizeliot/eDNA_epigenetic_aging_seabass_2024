@@ -16,7 +16,7 @@
 # Note: MinKNOW settings were initially set to a fast basecalling using GUPPY, with a minimum Q-score of 8
 # We merged all POD5 (different folders) not to filter per Q, and used the latest sup basecalling model in Dorado
 
-# Note 2: The pod5 were all grouped in the "pod5_all" so they can be merged, but this folder was removed after
+# Note 2: The pod5 were all grouped in the "pod5_all" so they can be merged, but this folder was removed after (too heavy)
 
 # sudo umount /mnt/h
 # sudo mount -t drvfs H: /mnt/h
@@ -30,6 +30,8 @@
 ##### PART 2 - GPU server (docker + bash): Superior basecalling with Dorado on the full POD5 #####
 
 # Info: Docker, and Dorado (as well as the basecalling model used) were all previously installer on the GPU server
+
+# Note 3: As for the POD5 file, the FASTQ file was not saved because it was too heavy (folder basecalling_sup removed)
 
 # docker run -it -v /home/elruiz/:/home/elruiz/ -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --gpus=1 --user $(id -u):$(id -g) ontresearch/dorado /bin/bash -c "cd /home/elruiz && dorado basecaller --emit-fastq dna_r10.4.1_e8.2_400bps_sup\@v4.2.0 A_data/merged_pod5/unfiltered_seabass_edna_reads.pod5 > A_data/basecalling_sup/unfiltered_seabass_edna_reads_sup.fastq"
 
