@@ -978,5 +978,3 @@ m6A_6mA_only_1kb_age_associated_sites
 
 unique(m6A_6mA_only_1kb_age_associated_sites$REF_SEQ) # Only mitochondrial genome
 unique(m6A_6mA_only_1kb_age_associated_sites$STRAND)
-
-
