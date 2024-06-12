@@ -1,9 +1,5 @@
-                                                                        
-                               # Ruiz et al. (2024)                             
-                # Environmental DNA epigenetics accurately predicts             
-                        # the age of cultured fish larvae                       
-                                                                              
-                                                                              
+# Ruiz et al. (2024) - Environmental DNA epigenetics accurately predicts the age of cultured fish larvae                       
+
 
 # Description:
 
