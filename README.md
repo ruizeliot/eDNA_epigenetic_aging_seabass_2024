@@ -1,23 +1,23 @@
                                                                         
-                               ##Ruiz et al. (2024)                             
-                ##Environmental DNA epigenetics accurately predicts             
-                        ##the age of cultured fish larvae                       
+                               ## Ruiz et al. (2024)                             
+                ## Environmental DNA epigenetics accurately predicts             
+                        ## the age of cultured fish larvae                       
                                                                               
                                                                               
 
-#Description:
+# Description:
 
 This repository contains the main data generated for prediction of seabass larvae
 age from eDNA.
 
 
-#Architecture:
+# Architecture:
 
 Each file used/generated in a specific script whose names starts with a letter is 
 placed in the corresponding folder.
 
 
-#Reproducibility:
+# Reproducibility:
 
 The R project was made reproducible using the renv package: 
 https://rstudio.github.io/renv/articles/renv.html
@@ -29,12 +29,12 @@ The whole folder with all data as well as the renv architecture is available on
 FigShare: https://doi.org/10.6084/m9.figshare.25466890
 
 
-#Author contact:
+# Author contact:
 
 Through GitHub or using this email address: eliotruiz3@gmail.com
 
 
-#Large files not deposited in the FigShare repository:
+# Large files not deposited in the FigShare repository:
 
 The "MinKNOW_output" folder (41.3 Go) and the "basecalling_sup" folder (40.6 Go)
 that contain respectively the raw sequencing output from the MinION, and the sup-
